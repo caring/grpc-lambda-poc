@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: grpc-lambda-poc
+service: grpc-lambda
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -24,6 +24,9 @@ frameworkVersion: ">=1.28.0 <2.0.0"
 provider:
   name: aws
   runtime: go1.x
+
+plugins:
+  - serverless-offline
 
 # you can overwrite defaults here
 #  stage: dev
@@ -45,15 +48,15 @@ provider:
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
 
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
 package:
   exclude:
     - ./**
   include:
     - ./bin/**
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
 
 functions:
   gateway:
@@ -98,6 +101,7 @@ functions:
 #          conditions:
 #            host: example.com
 #            path: /hello
+
 #    Define function environment variables here
 #    environment:
 #      variable2: value2

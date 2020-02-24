@@ -1,0 +1,13 @@
+{
+  "name": "grpc-lambda-poc",
+  "version": "0.0.1",
+  "description": "A Go gRPC in Lambda POC ",
+  "scripts": {
+    "start": "sls offline -P 3001"
+  },
+  "author": "Andrew Marine",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "serverless-offline": "^5.12.1"
+  }
+}
