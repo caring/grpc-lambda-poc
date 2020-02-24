@@ -19,11 +19,11 @@ import (
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
 type Response events.APIGatewayProxyResponse
 
-const serviceAddress = "localhost:3000"
+const serviceAddress = "host.docker.internal:3000"
 
 // Gateway is our lambda handler invoked by the `lambda.Start` function call
 func Gateway(ctx context.Context) (Response, error) {
-	conn, err := grpc.Dial(serviceAddress, grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial(serviceAddress, grpc.WithInsecure(), grpc.WithTimeout(time.Duration(10)*time.Second))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 		return Response{StatusCode: 500}, err
